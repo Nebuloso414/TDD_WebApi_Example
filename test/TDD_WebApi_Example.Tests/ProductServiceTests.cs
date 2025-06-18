@@ -35,5 +35,20 @@ namespace TDD_WebApi_Example.Tests
             Assert.Equal(expected.Id, result.Id);
             Assert.Equal(expected.Name, result.Name);
         }
+
+        [Fact]
+        public async Task GetById_ShouldReturnNull_WhenIdIsNotValid()
+        {
+            // Arrange
+            Product? expected = null;
+            int id = -1;
+
+            // Act
+            var result = await _sut.GetById(id);
+
+            // Assert
+            Assert.Null(result);
+            Assert.Equal(expected, result);
+        }
     }
 }
